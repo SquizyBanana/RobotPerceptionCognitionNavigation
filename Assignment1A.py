@@ -39,7 +39,9 @@ for measurement in range(18):
     average_gy = total_gy/len(strings)
     average_gz = total_gz/len(strings)
 
-    measurements.append({average_x, average_y, average_z, average_gx, average_gy, average_gz})
+    average_list = [average_x, average_y, average_z, average_gx, average_gy, average_gz]
+
+    measurements.append(average_list)
 
 print(measurements)
 
