@@ -1,17 +1,40 @@
 
+measurements = []
 
-file = open("Assignment 1A data\MT_037004D1_001-000.txt","r")
+for measurement in range(18):
+    file = open(f"Assignment 1A data\MT_037004D1_00{measurement}-000.txt","r")
 
-raw_strings = file.readlines()
+    raw_strings = file.readlines()
 
-for i in range(12):
-    raw_strings.pop(0)
+    for i in range(13):
+        raw_strings.pop(0)
+    strings = []
+    for i in range(len(raw_strings)):
+        strings.append(raw_strings[i].split("\t"))
 
-print(raw_strings[0])
-raw_strings.pop(0)
-strings = []
-data = []
-for i in range(len(raw_strings)):
-    strings.append(raw_strings[i].split("\t"))
-    
-print(strings[0])
+    total_x = 0
+    total_y = 0
+    total_z = 0
+    total_gx = 0
+    total_gy = 0
+    total_gz = 0
+
+
+    for i in range(len(strings)):
+        total_x = total_x+float(strings[i][2])
+        total_y = total_y+float(strings[i][3])
+        total_z = total_z+float(strings[i][4])
+        total_gx = total_gx+float(strings[i][5])
+        total_gy = total_gy+float(strings[i][6])
+        total_gz = total_gz+float(strings[i][7])
+
+    average_x = total_x/len(strings)
+    average_y = total_y/len(strings)
+    average_z = total_z/len(strings)
+    average_gx = total_gx/len(strings)
+    average_gy = total_gy/len(strings)
+    average_gz = total_gz/len(strings)
+
+    measurements.append(average_x, average_y, average_z, average_gx, average_gy, average_gz)
+
+print(measurements)
