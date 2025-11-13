@@ -2,7 +2,11 @@
 measurements = []
 
 for measurement in range(18):
-    file = open(f"Assignment 1A data\MT_037004D1_00{measurement}-000.txt","r")
+    if measurement < 9:
+        number = "0" + str(measurement+1)
+    else:
+        number = str(measurement+1)
+    file = open(f"Assignment 1A data\MT_037004D1_0{number}-000.txt","r")
 
     raw_strings = file.readlines()
 
@@ -35,6 +39,8 @@ for measurement in range(18):
     average_gy = total_gy/len(strings)
     average_gz = total_gz/len(strings)
 
-    measurements.append(average_x, average_y, average_z, average_gx, average_gy, average_gz)
+    measurements.append({average_x, average_y, average_z, average_gx, average_gy, average_gz})
 
 print(measurements)
+
+# 1, 7, 13 +x
