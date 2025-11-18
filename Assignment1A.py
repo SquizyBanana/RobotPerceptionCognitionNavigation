@@ -45,4 +45,10 @@ for measurement in range(18):
 
 print(measurements)
 
-# 1, 7, 13 +x
+# 1, 7, 13 +z
+# 2, 8, 14 -z
+# 3, 9, 15 +y
+# 4, 10, 16 -y
+# 5, 11, 17 -x
+# 6, 12, 18 +x
+
