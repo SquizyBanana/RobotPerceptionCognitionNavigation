@@ -136,23 +136,26 @@ def calculate_trajectory_with_acceleration(time, yaw_rate, acceleration_body):
 
     return position_x, position_y, heading
 
-# Calculate drift distance
+# calculate drift distance
 def calculate_drift(position_x, position_y):
     drift = np.sqrt((position_x[-1] - position_x[0])**2 + (position_y[-1] - position_y[0])**2)
     return drift
 
-# Plot trajectory
+# plot of trajectory
 def plot_trajectory(position_x, position_y, title):
     plt.figure()
-    plt.plot(position_x, position_y, linestyle='--', marker='o', color='b', label='line with marker')
+    plt.plot(position_x, position_y, linewidth=1.5, label='trajectory')
+    # i added beginning and end point
+    plt.scatter(position_x[0], position_y[0], s=60, label='start')
+    plt.scatter(position_x[-1], position_y[-1], s=60, label='end')
     plt.axis("equal")
     plt.xlabel("X [m]")
     plt.ylabel("Y [m]")
     plt.title(title)
     plt.grid(True)
-# Process one file
+
+
 def process_file(csv_path):
-    # Load data
     time, angular_velocity_raw, acceleration_raw = load_imu_csv(csv_path)
 
     # Calibrate data
