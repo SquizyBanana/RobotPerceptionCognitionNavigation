@@ -120,3 +120,10 @@ for ax in ["x", "y", "z"]:
 #4: y-axis up (against gravity)
 #5: x-axis down (so same direction as gravity)
 #6: x-axis up (against gravity)
+# 1, 7, 13 +z
+# 2, 8, 14 -z
+# 3, 9, 15 +y
+# 4, 10, 16 -y
+# 5, 11, 17 -x
+# 6, 12, 18 +x
+
