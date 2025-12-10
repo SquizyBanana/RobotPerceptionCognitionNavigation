@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import math
 
 
 measurements = []
@@ -53,9 +54,25 @@ for i in range(len(file_values)):
     integrated_z_angles.append(integrated_z_angle)
 
 
-ax.plot(integrated_z_angles[0], "r")
-ax.plot(integrated_z_angles[1], "b")
-ax.plot(integrated_z_angles[2], "g")
+# ax.plot(integrated_z_angles[0], "r")
+# ax.plot(integrated_z_angles[1], "b")
+# ax.plot(integrated_z_angles[2], "g")
+
+positions = []
+
+for i in range(len(file_values)):
+    posx = 0
+    posy = 0
+    positions = []
+    for t in range(len(integrated_z_angles[i])):
+        posx += math.cos(integrated_z_angles[i][t])
+        posy += math.sin(integrated_z_angles[i][t])
+        positions.append([posx,posy])
+
+print(positions)
+ax.plot(positions[0][0],positions[0][1])
+ax.plot(positions[1][0],positions[1][1])
+ax.plot(positions[2][0],positions[2][1])
 
 
 plt.show()
