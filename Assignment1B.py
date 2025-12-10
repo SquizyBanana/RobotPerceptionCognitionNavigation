@@ -77,7 +77,11 @@ def calculate_trajectory(time, yaw_rate, speed=1.0):
 
     for i in range(1, number_of_points):
         time_step = time[i] - time[i-1]
+
         if time_step <= 0:
+            heading[i] = heading[i-1]
+            position_x[i] = position_x[i-1]
+            position_y[i] = position_y[i-1]
             continue
 
         # Update heading so integrate yaw rate
@@ -101,9 +105,16 @@ def calculate_trajectory_with_acceleration(time, yaw_rate, acceleration_body):
     velocity_x[0] = 1.0
     velocity_y[0] = 0.0
 
+
     for i in range(1, number_of_points):
         time_step = time[i] - time[i-1]
+
         if time_step <= 0:
+            heading[i] = heading[i-1]
+            velocity_x[i] = velocity_x[i-1]
+            velocity_y[i] = velocity_y[i-1]
+            position_x[i] = position_x[i-1]
+            position_y[i] = position_y[i-1]
             continue
 
         # Update heading so integrate yaw rate
